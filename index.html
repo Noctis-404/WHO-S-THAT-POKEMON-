@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who's That Pokémon?</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Menu Screen -->
+  <div id="menu-screen" class="screen show">
+    <div class="pokedex-bg">
+      <div id="left-text-btn" class="floating-label guess-label">Guess<br>Game</div>
+      <div id="right-text-btn" class="floating-label open-pokedex-label">Open<br>Pokédex</div>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" class="screen hide">
+    <div class="game-container">
+      <button class="back-btn" onclick="backToMenu()">← Back</button>
+      
+      <div class="image-wrapper">
+        <div id="loader" class="loader">Loading...</div>
+        <img id="pokemon-img" src="" alt="pokemon" style="display: none;">
+      </div>
+
+      <div class="game-ui">
+        <p id="result"></p>
+        <div class="input-group">
+          <input type="text" id="guess" placeholder="Who's that Pokémon?" autocomplete="off">
+          <button class="action-btn" onclick="checkGuess()">Guess</button>
+          <button class="action-btn next-btn" onclick="nextPokemon()" disabled>Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pokedex Screen -->
+  <div id="pokedex-screen" class="screen hide pokedex-list-bg">
+    <div class="header-container">
+      <button class="back-btn" onclick="backToMenu()">← Back</button>
+      <h1 class="pokedex-title">Kanto Gen 1</h1>
+    </div>
+    <div class="grid-container" id="pokedex-grid">
+      <!-- 151 Pokemon injected here via JS -->
+    </div>
+  </div>
+
+  <!-- Pokemon Detail Screen -->
+  <div id="detail-screen" class="screen hide detail-bg">
+    <div class="detail-container">
+      <div class="detail-top-bar">
+        <button class="icon-back-btn" onclick="backToPokedex()">←</button>
+        <h2 id="detail-name" class="detail-title">Squirtle</h2>
+        <div style="display: flex; align-items: center;">
+           <span id="detail-id" style="font-size: 0.8rem; font-weight: bold; background: white; border: 2px solid black; border-radius: 10px; padding: 2px 8px; margin-right: 5px; color: black; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">#001</span>
+           <span class="heart-icon">❤️</span>
+        </div>
+      </div>
+      
+      <div class="detail-image-box">
+        <div class="pokeball-bg"></div>
+        <img id="detail-img" src="" alt="pokemon">
+      </div>
+      
+      <div class="types-container" id="detail-types">
+        <!-- Types injected here -->
+      </div>
+      
+      <div class="detail-info-card">
+        <div class="about-tabs">
+          <span class="tab active">About</span>
+          <span class="tab">Stats</span>
+          <span class="tab">Moves</span>
+          <span class="tab">Evolutions</span>
+        </div>
+
+        <div class="about-content">
+          <p id="detail-desc">Squirtle is water type Pokemon...</p>
+          
+          <div class="measurements">
+            <div class="measurement-box">
+              <span class="m-label">⚖️ Weight</span>
+              <div class="m-val" id="detail-weight">9.0 Kg</div>
+            </div>
+            <div class="measurement-box">
+              <span class="m-label">↕️ Height</span>
+              <div class="m-val" id="detail-height">0.5 M</div>
+            </div>
+          </div>
+          
+          <div class="gender-ratio">
+            <span class="m-label">♂️♀️ Gender Ratio</span>
+            <div class="gender-bar">
+               <div class="gender-bar-fill">87.5% Male</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
