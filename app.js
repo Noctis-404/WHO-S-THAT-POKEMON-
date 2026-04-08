@@ -11,9 +11,6 @@ const result = document.getElementById("result");
 const guessInput = document.getElementById("guess");
 const nextBtn = document.querySelector(".next-btn");
 
-
-
-// Menu Navigation
 const navigateToGame = () => {
   menuScreen.classList.remove('show');
   menuScreen.classList.add('hide');
@@ -139,12 +136,11 @@ guessInput.addEventListener("keydown", (e) => {
   }
 });
 
-// --- Pokedex Functionality ---
 async function fetchPokedex() {
   pokedexGrid.innerHTML = '<div class="loader" style="grid-column: 1 / -1; text-align: center;">Loading Pokedex...</div>';
   
   try {
-    pokedexGrid.innerHTML = ''; // clear loader
+    pokedexGrid.innerHTML = '';
     for (let i = 1; i <= 151; i++) {
       const gridItem = document.createElement("div");
       gridItem.classList.add("poke-grid-item");
@@ -168,13 +164,11 @@ async function fetchPokedex() {
 }
 
 async function showPokemonDetail(id) {
-  // Switch screens
   pokedexScreen.classList.remove('show');
   pokedexScreen.classList.add('hide');
   detailScreen.classList.remove('hide');
   detailScreen.classList.add('show');
   
-  // Set temporary loading state
   document.getElementById("detail-name").innerText = "Loading...";
   document.getElementById("detail-img").src = "";
   document.getElementById("detail-types").innerHTML = "";
@@ -194,18 +188,14 @@ async function showPokemonDetail(id) {
     const pokeData = await pokeRes.json();
     const speciesData = await speciesRes.json();
 
-    // ID formatting: #001
     document.getElementById("detail-id").innerText = `#${id.toString().padStart(3, '0')}`;
     
-    // Name
     document.getElementById("detail-name").innerText = pokeData.name;
     
-    // Image
     let imageUrl = pokeData.sprites.other["official-artwork"].front_default;
     if (!imageUrl) imageUrl = pokeData.sprites.front_default;
     document.getElementById("detail-img").src = imageUrl;
     
-    // Types
     const typeColors = {
       normal: "#A8A77A", fire: "#EE8130", water: "#6390F0", electric: "#F7D02C", grass: "#7AC74C",
       ice: "#96D9D6", fighting: "#C22E28", poison: "#A33EA1", ground: "#E2BF65", flying: "#A98FF3",
@@ -219,17 +209,14 @@ async function showPokemonDetail(id) {
       return `<span class="type-badge" style="background-color: ${color}; color: ${['electric', 'ice', 'flying', 'normal'].includes(typeName) ? 'black' : 'white'}; border-color: ${color}">${typeName}</span>`;
     }).join("");
     document.getElementById("detail-types").innerHTML = typesHtml;
-
-    // Weight and Height
+    
     document.getElementById("detail-weight").innerText = `${pokeData.weight / 10} Kg`;
     document.getElementById("detail-height").innerText = `${pokeData.height / 10} M`;
 
-    // Flavor Text (English)
     const flavorTextEntry = speciesData.flavor_text_entries.find(entry => entry.language.name === "en");
     const formattedDesc = flavorTextEntry ? flavorTextEntry.flavor_text.replace(/\f/g, "\n").replace(/\n/g, " ") : "No description available.";
     document.getElementById("detail-desc").innerText = formattedDesc;
 
-    // Gender Ratio
     const genderRate = speciesData.gender_rate;
     const genderBarFill = document.querySelector('.gender-bar-fill');
     const genderBar = document.querySelector('.gender-bar');
@@ -246,13 +233,12 @@ async function showPokemonDetail(id) {
       genderBarFill.style.background = '#90caf9';
       genderBar.style.background = '#f48fb1';
       if (malePercentage === 0) {
-        genderBarFill.style.display = 'none'; // Only female
+        genderBarFill.style.display = 'none';
       } else {
         genderBarFill.style.display = 'flex';
       }
     }
 
-    // Update background color based on primary type
     const primaryType = pokeData.types[0].type.name;
     const bgColor = typeColors[primaryType] || "#fc5c5c";
     detailScreen.style.backgroundColor = bgColor;
