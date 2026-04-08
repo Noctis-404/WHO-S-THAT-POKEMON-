@@ -5,7 +5,7 @@ body, html {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* Prevent scrolling */
+  overflow: hidden;
   background-color: black;
   font-family: 'Press Start 2P', sans-serif;
 }
@@ -31,7 +31,6 @@ body, html {
   pointer-events: none;
 }
 
-/* Menu Screen */
 #menu-screen {
   background-color: black;
   display: flex;
@@ -88,9 +87,6 @@ body, html {
 .open-pokedex-label:hover {
   transform: rotate(10deg) scale(1.1);
 }
-
-
-/* Game Screen */
 #game-screen {
   background-image: url('whosthatpokemonshadow.png');
   background-size: contain;
@@ -128,7 +124,6 @@ body, html {
   box-shadow: 0px 0px 0 black;
 }
 
-/* We place the pokemon roughly where the white light is */
 .image-wrapper {
   position: absolute;
   top: 45%;
@@ -146,7 +141,7 @@ body, html {
 img#pokemon-img {
   max-width: 100%;
   max-height: 100%;
-  filter: brightness(0); /* Shadow effect */
+  filter: brightness(0);
   transition: filter 0.5s ease;
   user-select: none;
   -webkit-user-drag: none;
@@ -163,11 +158,10 @@ img#pokemon-img.reveal {
   text-shadow: 2px 2px white;
 }
 
-/* Game UI at the bottom left */
 .game-ui {
   position: absolute;
   bottom: 20px;
-  left: 18%; /* Shifted to the right a bit to fit inside image better */
+  left: 18%;
   width: calc(100% - 40px);
   max-width: 500px;
   background: rgba(255, 255, 255, 0.95);
@@ -197,7 +191,7 @@ img#pokemon-img.reveal {
 }
 
 #result.correct {
-  color: #ffde00; /* Classic pokemon yellow */
+  color: #ffde00;
   -webkit-text-stroke: 2px #3b4cca;
   text-shadow: 4px 4px 0px #3b4cca;
 }
@@ -211,8 +205,7 @@ img#pokemon-img.reveal {
 .input-group {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap; /* Fix overflow by allowing buttons to wrap */
-}
+  flex-wrap: wrap;
 
 input#guess {
   flex: 1 1 200px;
@@ -250,13 +243,11 @@ input#guess {
   box-shadow: 4px 4px 0 black;
 }
 
-/* Next button styling */
 .next-btn {
   background: #4caf50;
   color: white;
 }
 
-/* --- Pokedex Screen Styles --- */
 .pokedex-list-bg {
   background: linear-gradient(180deg, #fce4ec 0%, #bbdefb 100%);
   overflow-y: auto;
@@ -317,10 +308,9 @@ input#guess {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  image-rendering: pixelated; /* Ensures the sprites stay crisp! */
+  image-rendering: pixelated;
 }
 
-/* --- Detail Screen Styles --- */
 .detail-bg {
   background-color: #ff5252;
   display: flex;
