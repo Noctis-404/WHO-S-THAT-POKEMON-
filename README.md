@@ -8,7 +8,7 @@
 A high-performance, responsive web application that brings the classic "Who's That Pokémon?" game and a comprehensive Kanto Pokédex to your browser. This project showcases advanced API handling, CSS variables for theming, and the power of Array Higher-Order Functions.
 
 ## 🚀 Live Demo
-**[Deploy this project on Netlify!](https://www.netlify.com/)** (Use the `/dist` folder for the fastest deployment)
+https://genuine-longma-7fd351.netlify.app/
 
 ---
 
